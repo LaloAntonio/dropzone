@@ -1,6 +1,6 @@
 Dropzone.autoDiscover = false;
 var myDropzone = new Dropzone(".dropzone",{
-    url: "upload.php?p=upload",
+    url: "upload.php?p=edit",
     autoProcessQueue: false,
     parallelUploads: 10,
     uploadMultiple:true,

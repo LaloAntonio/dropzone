@@ -1,3 +1,9 @@
+<?php
+include 'connecdb.php';
+$getid = isset($_GET['p'])?$_GET['p']:'';
+$search = "SELECT * FROM noticia WHERE idnoticia = '$getid'";
+$getinfo = mysqli_query($mysqli,$search);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,11 +27,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#"><i class="fas fa-home"></i> Home</a>
-        </li>
         <li class="nav-item">
-          <a class="nav-link" href="notiregistro.html"><i class="fas fa-table"></i> Noticias Registradas</a>
+          <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="notiregistro.html">Noticias Registradas</a>
         </li>
       </ul>
     </div>
@@ -33,31 +39,26 @@
   <br>
   <div class="container">
     <form>
-      <div id="dZUpload" class="dropzone">
-        <div class="dz-default dz-message">
-          <center>
-            <h3>Subir Archivos</h3>
-          </center>
-        </div>
-      </div>
-      <br>
+    <?php 
+    $row =mysqli_fetch_assoc($getinfo)
+    ?>
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6">
           <div class="form-group">
             <label for="">Titulo:</label>
-            <input type="text" class="form-control" name="name" id="name" placeholder="Titulo de la Noticia">
+            <input type="text" class="form-control" name="name" id="name" value="<?php echo $row['titulo'];?>">
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6">
           <div class="form-group">
             <label for="">Subtitulo:</label>
-            <input type="text" class="form-control" name="subname" id="subname" placeholder="Subtitulo de la Noticia">
+            <input type="text" class="form-control" name="subname" id="subname" value="<?php echo $row['subtitulo'];?>">
           </div>
         </div>
       </div>
       <p>Contenido:</p>
       <div>
-        <textarea name="editor" id="editor" style="min-width: 100%"></textarea>
+        <textarea name="editor" id="editor" style="min-width: 100%"><?php echo $row['contenido'];?></textarea>
       </div>
     </form>
     <br>
@@ -70,10 +71,8 @@
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script type="text/javascript" src="dropzone-5.5.0/dist/min/dropzone.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="js/options.js"></script>
   <script src="ckeditor/ckeditor.js"></script>
   <script src="https://kit.fontawesome.com/f2ba2b69c8.js" crossorigin="anonymous"></script>
   <script>

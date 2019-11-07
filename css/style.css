@@ -4,3 +4,6 @@ body {
 #dZUpload {
 	border-style: dashed;
   }
+.center-text {
+	text-align: center;
+}
