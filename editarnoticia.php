@@ -42,6 +42,13 @@ $getinfo = mysqli_query($mysqli,$search);
     <?php 
     $row =mysqli_fetch_assoc($getinfo)
     ?>
+      <div id="dZUpload" class="dropzone">
+        <div class="dz-default dz-message">
+          <center>
+            <h3>Subir Archivos</h3>
+          </center>
+        </div>
+      </div>
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6">
           <div class="form-group">
@@ -75,6 +82,8 @@ $getinfo = mysqli_query($mysqli,$search);
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="ckeditor/ckeditor.js"></script>
   <script src="https://kit.fontawesome.com/f2ba2b69c8.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="dropzone-5.5.0/dist/min/dropzone.min.js"></script>
+  <script src="js/optionsedit.js"></script>
   <script>
     CKEDITOR.replace( 'editor');
   </script>

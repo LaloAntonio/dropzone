@@ -1,3 +1,4 @@
+var id = window.location.toString().split('=')[1];
 Dropzone.autoDiscover = false;
 var myDropzone = new Dropzone(".dropzone",{
     url: "upload.php?p=edit",
@@ -7,18 +8,15 @@ var myDropzone = new Dropzone(".dropzone",{
     maxFiles: 5,
     addRemoveLinks: true,
     acceptedFiles: "image/jpeg",
-    renameFilename: function () {
-        var d = new Date();
-        var year = d.getFullYear();
-        var date = d.getDate();
-        var month = d.getMonth();
-        var hour = d.getHours();
-        var minute = d.getMinutes();
-        var sec = d.getSeconds();
-        var msec = d.getMilliseconds();
-        return year+'-'+month+'-'+date+'-'+hour+'-'+minute+'-'+sec+'-' + msec +'_file.jpg';
-    },
     init: function() {
+        $.get('showimages.php?i='+id, function(data) {
+            $.each(data, function(key,value){
+                var mockFile = { name: value.name, size: value.size };
+                myDropzone.options.addedfile.call(myDropzone, mockFile);
+                myDropzone.options.thumbnail.call(myDropzone, mockFile, "upload/"+value.name);
+            });
+
+        });
         $('#uploadfiles').click(function(){
             swal({
                 title: "Desea Registrar esta Noticia?",

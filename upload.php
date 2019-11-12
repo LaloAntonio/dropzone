@@ -18,7 +18,7 @@ if ($page == 'upload') {
 		for ($i=0;$i<count($_FILES['file']['name']);$i++) { 
 			$origen=$_FILES["file"]["tmp_name"][$i];
 			$namefile=$_FILES["file"]["name"][$i];
-			$destino=$location.$namefile;
+			$destino=$location.$namefile.$last_id.'file.jpg';
 			if (@move_uploaded_file($origen, $destino)) {
 				$insert = "INSERT INTO imagenoticia VALUE ('','$namefile','$date','$i','$last_id')";
 				$query = mysqli_query($mysqli,$insert);

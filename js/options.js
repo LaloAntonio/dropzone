@@ -16,7 +16,7 @@ var myDropzone = new Dropzone(".dropzone",{
         var minute = d.getMinutes();
         var sec = d.getSeconds();
         var msec = d.getMilliseconds();
-        return year+'-'+month+'-'+date+'-'+hour+'-'+minute+'-'+sec+'-' + msec +'_file.jpg';
+        return year+'-'+month+'-'+date+'-'+hour+'-'+minute+'-'+sec+'-' + msec +'_';
     },
     init: function() {
         $('#uploadfiles').click(function(){
