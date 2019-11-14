@@ -12,8 +12,8 @@ var myDropzone = new Dropzone(".dropzone",{
         $.get('showimages.php?i='+id, function(data) {
             $.each(data, function(key,value){
                 var mockFile = { name: value.name, size: value.size };
-                myDropzone.options.addedfile.call(myDropzone, mockFile);
-                myDropzone.options.thumbnail.call(myDropzone, mockFile, "upload/"+value.name);
+                myDropzone.emit('addedfile', mockFile);
+                myDropzone.emit('thumbnail', mockFile, "upload/"+value.name);
             });
 
         });

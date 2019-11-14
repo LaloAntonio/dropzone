@@ -2,7 +2,7 @@
 $getid = isset($_GET['i'])?$_GET['i']:'';
 $result  = array();
 $ds          = DIRECTORY_SEPARATOR; 
-$storeFolder = 'upload';   
+$storeFolder = 'upload';
 $files = scandir($storeFolder);                 //1
 if ( false!==$files ) {
     foreach ( $files as $file ) {
@@ -12,6 +12,7 @@ if ( false!==$files ) {
           $convert = implode("_",$filter);
           $obj['name'] = $convert;
           $obj['size'] = filesize($storeFolder.$ds.$convert);
+          $obj['path'] = $storeFolder.$ds.$convert;
           $result[] = $obj;
         }
       }
